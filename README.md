@@ -52,10 +52,32 @@
         12-second preview · <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/hardware.mp4">Full video · 20 s</a>
       </td>
     </tr>
+    <tr>
+      <th>Full-speed locomotion · archive</th>
+      <th>Low-speed omnidirectional control · archive</th>
+    </tr>
+    <tr>
+      <td align="center" valign="middle">
+        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-full-speed.mp4"><img src="docs/media/simulation-full-speed.gif" alt="Earlier X2 policy: full-speed walking, lateral motion and running in MuJoCo" width="420"></a>
+      </td>
+      <td align="center" valign="middle">
+        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-low-speed.mp4"><img src="docs/media/simulation-low-speed.gif" alt="Earlier X2 policy: low-speed walking, lateral motion and turning in MuJoCo" width="420"></a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <strong>Earlier full-speed policy · 104 inputs</strong><br>
+        12-second preview · <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-full-speed.mp4">Full video · 35 s</a>
+      </td>
+      <td align="center">
+        <strong>Earlier low-speed policy · 104 inputs</strong><br>
+        12-second preview · <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-low-speed.mp4">Full video · 31 s</a>
+      </td>
+    </tr>
   </tbody>
 </table>
 
-The simulation covers standing, forward/backward and lateral walking, turns, running, braking and restarting, with commanded and measured velocities in the overlay. The hardware clip is a separately supplied experiment recording; it does not identify a policy checkpoint. [Video files and provenance](docs/media/README.md).
+The simulations cover standing, forward/backward and lateral walking, turns, running, braking and restarting, with commanded and measured velocities in the overlay. The two archive clips document earlier Kp090/Kd080 policies, separately from the released History2 Hybrid. The hardware clip is a separately supplied experiment recording; it does not identify a policy checkpoint. [Video files and provenance](docs/media/README.md).
 
 **Research release:** the eight archived simulation evaluations pass. Historical hardware tests achieved standing and some forward walking, but turning followed by command cancellation could still cause loss of balance. The public ROS 2 adapter needs its own hardware regression. See [validation status](docs/hardware-status.md).
 
