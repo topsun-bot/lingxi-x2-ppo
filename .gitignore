@@ -1,0 +1,39 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.venv*/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+*.egg
+dist/
+
+# Training runs and local data; curated models/ is intentionally tracked
+training/logs/
+training/artifacts/
+datasets/
+wandb/
+MUJOCO_LOG.TXT
+*.log
+*.tar.gz
+*.zip
+
+# ROS 2 and native build products
+build/
+install/
+log/
+compile_commands.json
+
+# Credentials and per-robot configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*_local.yaml
+*.bag
+*.db3
+*.mcap
+.DS_Store
+.idea/
+.vscode/

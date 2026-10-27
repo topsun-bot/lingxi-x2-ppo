@@ -1,0 +1,38 @@
+# A ROS 2 HAL simulator profile. Use a separate ROS_DOMAIN_ID from hardware.
+output_enabled: true
+simulation_mode: true
+allow_hardware_output: false
+start_mode: rl
+require_deadman: false
+# Official HAL topic; simulator sensor binding must match the pelvis/root contract.
+imu_topic: /aima/hal/imu/torso/state
+imu_frame: pelvis
+publish_dt: 0.002
+state_timeout: 0.20
+joy_timeout: 0.30
+max_tilt_degrees: 60.0
+max_default_pose_error: 0.45
+transition_duration: 3.0
+gain_scale: 1.0
+damping_gain: 5.0
+safety:
+  max_command_x: 2.0
+  max_command_y: 1.0
+  max_command_yaw: 1.0
+  action_clip: 100.0
+  action_scale_factor: 1.0
+  joint_limit_margin: 0.0
+  max_position_deviation: 10.0
+  max_target_velocity: 1000.0
+joystick:
+  deadman_button: 4
+  disarm_button: 0
+  damping_button: 1
+  default_button: 2
+  rl_button: 3
+  forward_axis: 1
+  lateral_axis: 0
+  yaw_axis: 3
+  forward_axis_sign: -1.0
+  lateral_axis_sign: -1.0
+  yaw_axis_sign: -1.0

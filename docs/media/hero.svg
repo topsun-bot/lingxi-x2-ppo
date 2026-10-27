@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="420" viewBox="0 0 1440 420" role="img" aria-labelledby="title desc">
+  <title id="title">Lingxi X2 PPO</title>
+  <desc id="desc">Open humanoid locomotion research. Train in MuJoCo, evaluate, export to ONNX, integrate with ROS 2.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y2="1"><stop stop-color="#0b1220"/><stop offset="1" stop-color="#152b3d"/></linearGradient>
+    <linearGradient id="accent"><stop stop-color="#56e0ce"/><stop offset="1" stop-color="#63a7ff"/></linearGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#b1d1e9" stroke-opacity=".055"/></pattern>
+  </defs>
+  <rect width="1440" height="420" rx="22" fill="url(#bg)"/>
+  <rect width="1440" height="420" rx="22" fill="url(#grid)"/>
+  <rect x="72" y="66" width="44" height="4" rx="2" fill="url(#accent)"/>
+  <text x="72" y="110" font-family="Arial,Helvetica,sans-serif" font-size="17" letter-spacing="4" fill="#7edbd5">OPEN HUMANOID LOCOMOTION</text>
+  <text x="68" y="200" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="82" letter-spacing="-3" fill="#f4f8fc">Lingxi X2 PPO</text>
+  <text x="74" y="250" font-family="Arial,Helvetica,sans-serif" font-size="25" fill="#afc5d8">From parallel simulation to an explicit deployment contract.</text>
+  <text x="74" y="332" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#8eabbf">PPO  /  MuJoCo Warp  /  History2  /  ONNX  /  ROS 2</text>
+  <g transform="translate(1140 210)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle r="142" stroke="#5bb8d2" stroke-opacity=".16"/>
+    <circle r="111" stroke="#5bb8d2" stroke-opacity=".10" stroke-dasharray="5 8"/>
+    <g stroke="url(#accent)" stroke-width="12">
+      <path d="M-17-70H17L30-13 13 20H-22L-40-16Z"/>
+      <path d="M-18 21-40 66-19 112M12 22 42 69 73 91M-31-56-63-17-87-2M24-56 57-30 86-49"/>
+    </g>
+    <rect x="-20" y="-115" width="40" height="33" rx="11" stroke="#d5eff4" stroke-width="8"/>
+    <path d="M-29 116H1M67 98 90 91" stroke="#d5eff4" stroke-width="8"/>
+    <path d="M-105 130H108" stroke="#5bb8d2" stroke-opacity=".3" stroke-width="2"/>
+  </g>
+</svg>

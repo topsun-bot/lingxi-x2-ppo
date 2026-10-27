@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>lingxi_x2_deployment</name>
+  <version>0.1.0</version>
+  <description>Metadata-driven X2 Ultra PPO inference and an optional ROS 2 AIMDK adapter.</description>
+  <maintainer email="topsun-bot@users.noreply.github.com">topsun-bot</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>aimdk_msgs</depend>
+  <depend>yaml-cpp</depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

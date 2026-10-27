@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lingxi-x2-ppo-training"
+version = "0.1.0"
+description = "PPO locomotion training for AgiBot Lingxi X2 Ultra with mjlab and MuJoCo Warp"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = "Apache-2.0 AND MulanPSL-2.0"
+license-files = [
+  "LICENSE",
+  "NOTICE",
+  "src/assets/robots/agibot_x2/OFFICIAL_MODEL_LICENSE",
+]
+dependencies = [
+  "numpy==2.1.0",
+  "scipy==1.14.1",
+  "mjlab==1.2.0",
+  "mujoco==3.5.0",
+  "mujoco-warp==3.5.0",
+  "torch==2.10.0",
+  "warp-lang==1.12.0",
+  "rsl-rl-lib==5.0.1",
+  "onnx==1.22.0",
+  "tyro==1.0.16",
+  "prettytable==3.18.0",
+  "tensorboard==2.21.0",
+  "wandb==0.29.0",
+  "mediapy==1.2.7",
+  "Pillow>=11,<13",
+]
+
+[project.optional-dependencies]
+runtime = ["onnxruntime>=1.22,<2"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src", "src.*"]
+
+[tool.setuptools.package-data]
+"src.assets.robots.agibot_x2" = [
+  "OFFICIAL_MODEL_LICENSE",
+  "xmls/*.xml",
+  "xmls/assets/*.STL",
+]

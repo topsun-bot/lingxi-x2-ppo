@@ -1,0 +1,37 @@
+{
+  "name": "X2 Ultra History2 Hybrid v1",
+  "release": "v0.1.0",
+  "status": "experimental-research",
+  "robot": "AgiBot Lingxi X2 Ultra",
+  "robot_model": "v1.3.0",
+  "task_id": "Agibot-X2-Ultra-Behavior-Factory-Recorded-History2-Full-Envelope",
+  "created": "2026-09-09",
+  "input": {"name": "obs", "shape": [1, 208], "dtype": "float32"},
+  "output": {"name": "actions", "shape": [1, 31], "dtype": "float32"},
+  "policy_dt_s": 0.02,
+  "history_length": 2,
+  "history_layout": "per-term: previous, current",
+  "routing": "norm(current_command) < 0.1 selects settling; otherwise moving",
+  "observation_normalization": "embedded in ONNX",
+  "files": {
+    "policy.onnx": "33f7b37300d83a9a8676665e0413cbd430bb19dbc98a52aa1b14029abfb79c40",
+    "model_moving_4740.pt": "0097415d4d5c75f6c53e82c0d607a6fdce9d95c1f731624778eede577bc23652",
+    "model_settling_4720.pt": "3b8a60efbf9a3fb31ef84c50eb8fb1150a61f1172dc331ed02e95e7c1fc41fc3"
+  },
+  "simulation": {
+    "reports": 8,
+    "seeds": [42, 7],
+    "environments_per_report": 32,
+    "stage_results": 120,
+    "all_passed": true,
+    "minimum_stage_survival_rate": 1.0,
+    "maximum_stage_tilt_p95_deg": 12.2148,
+    "archived_torch_onnx_max_abs_error": 5.9604645e-7,
+    "archived_parity_scalar_outputs": 1705
+  },
+  "hardware": {
+    "status": "incomplete-validation",
+    "known_issue": "Turning followed by command cancellation can lead to delayed loss of balance. The public ROS adapter requires separate hardware validation."
+  },
+  "license": "Apache-2.0; third-party robot assets retain MulanPSL-2.0"
+}

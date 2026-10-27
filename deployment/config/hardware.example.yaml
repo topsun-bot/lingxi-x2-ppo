@@ -1,0 +1,43 @@
+# Explicit opt-in example for commissioning, not an accepted real-robot recipe.
+# The command-line --hardware flag is required in addition to these settings.
+output_enabled: true
+simulation_mode: false
+allow_hardware_output: true
+start_mode: disarmed
+require_deadman: true
+# Confirm actual sensor binding, calibration, orientation and angular-velocity
+# conventions, then explicitly change imu_frame to pelvis. Topic naming alone
+# is not evidence of a torso/pelvis mismatch.
+imu_topic: /aima/hal/imu/torso/state
+imu_frame: unverified
+publish_dt: 0.002
+state_timeout: 0.10
+joy_timeout: 0.30
+max_tilt_degrees: 35.0
+max_default_pose_error: 0.45
+transition_duration: 10.0
+gain_scale: 1.0
+damping_gain: 5.0
+safety:
+  # Command speed limits do not rescale the joint actions.
+  max_command_x: 0.20
+  max_command_y: 0.10
+  max_command_yaw: 0.20
+  # Preserve the trained action path; no extra +/-1 action clipping.
+  action_clip: 100.0
+  action_scale_factor: 1.0
+  joint_limit_margin: 0.03
+  max_position_deviation: 10.0
+  max_target_velocity: 1000.0
+joystick:
+  deadman_button: 4
+  disarm_button: 0
+  damping_button: 1
+  default_button: 2
+  rl_button: 3
+  forward_axis: 1
+  lateral_axis: 0
+  yaw_axis: 3
+  forward_axis_sign: -1.0
+  lateral_axis_sign: -1.0
+  yaw_axis_sign: -1.0

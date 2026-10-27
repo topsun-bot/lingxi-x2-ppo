@@ -1,0 +1,742 @@
+from mjlab.tasks.registry import register_mjlab_task
+
+from src.tasks.velocity.rl import VelocityOnPolicyRunner
+
+from .env_cfgs import (
+  agibot_x2_ultra_behavior_flat_env_cfg,
+  agibot_x2_ultra_behavior_factory_recorded_full_speed_gait_refine_env_cfg,
+  agibot_x2_ultra_behavior_factory_recorded_right_gait_refine_env_cfg,
+  agibot_x2_ultra_behavior_factory_recorded_right_gait_finish_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_backward_stabilize_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_flat_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_full_speed_brake_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_full_speed_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_full_speed_gait_refine_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_full_speed_leg_robust_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_full_speed_robust_mild_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_full_speed_robust_finalize_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_full_speed_robust_stop_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_history2_full_envelope_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_history2_full_gait_settle_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_history2_full_gait_stop_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_history2_full_settle_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_history2_full_stop_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_lateral_bootstrap_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_lateral_balance_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_omni_low_speed_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_omni_consolidate_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_omni_finalize_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_omni_rehearsal_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_robust_flat_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_robust_actuator_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_robust_dynamics_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_robust_medium_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_robust_mild_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_robust_mild_lateral_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_robust_mild_sagittal_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_robust_mild_turn_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_robust_omni_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_robust_sensor_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_sagittal_balance_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_sagittal_stabilize_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_sensor_bias_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_sensor_history2_backward_clearance_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_sensor_history2_backward_finish_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_sensor_delay_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_sensor_history2_gait_recover_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_sensor_history2_nominal_finish_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_sensor_history2_stability_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_sensor_history2_turn_finish_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_sensor_stability_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_turn_bootstrap_env_cfg,
+  agibot_x2_ultra_behavior_kp090_kd080_turn_balance_env_cfg,
+  agibot_x2_ultra_behavior_robust_flat_env_cfg,
+  agibot_x2_ultra_behavior_robust_backward_refine_env_cfg,
+  agibot_x2_ultra_behavior_robust_lateral_balance_env_cfg,
+  agibot_x2_ultra_behavior_robust_lateral_backward_env_cfg,
+  agibot_x2_ultra_behavior_robust_lateral_brake_env_cfg,
+  agibot_x2_ultra_behavior_robust_lateral_refine_env_cfg,
+  agibot_x2_ultra_behavior_robust_low_speed_env_cfg,
+  agibot_x2_ultra_flat_env_cfg,
+  agibot_x2_ultra_kp090_kd080_flat_env_cfg,
+  agibot_x2_ultra_kp090_kd080_gait_bootstrap_env_cfg,
+  agibot_x2_ultra_kp090_kd080_arc_turn_bootstrap_env_cfg,
+  agibot_x2_ultra_kp090_kd080_turn_seeded_bootstrap_env_cfg,
+  agibot_x2_ultra_kp090_kd080_turn_gait_bootstrap_env_cfg,
+  agibot_x2_ultra_rough_env_cfg,
+  use_x2_ultra_factory_recorded_leg_gains,
+)
+from .rl_cfg import (
+  agibot_x2_ultra_behavior_ppo_runner_cfg,
+  agibot_x2_ultra_ppo_runner_cfg,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Rough",
+  env_cfg=agibot_x2_ultra_rough_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_rough_env_cfg(play=True),
+  rl_cfg=agibot_x2_ultra_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Flat",
+  env_cfg=agibot_x2_ultra_flat_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_flat_env_cfg(play=True),
+  rl_cfg=agibot_x2_ultra_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Kp090-Kd080-Flat",
+  env_cfg=agibot_x2_ultra_kp090_kd080_flat_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_kp090_kd080_flat_env_cfg(play=True),
+  rl_cfg=agibot_x2_ultra_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Kp090-Kd080-Gait-Bootstrap",
+  env_cfg=agibot_x2_ultra_kp090_kd080_gait_bootstrap_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_kp090_kd080_gait_bootstrap_env_cfg(play=True),
+  rl_cfg=agibot_x2_ultra_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Flat",
+  env_cfg=agibot_x2_ultra_behavior_flat_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_flat_env_cfg(play=True),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Flat",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_flat_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_flat_env_cfg(play=True),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Sagittal-Stabilize",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_sagittal_stabilize_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_sagittal_stabilize_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Backward-Stabilize",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_backward_stabilize_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_backward_stabilize_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Sagittal-Balance",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_sagittal_balance_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_sagittal_balance_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Omni-Low-Speed",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_omni_low_speed_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_omni_low_speed_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Lateral-Bootstrap",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_lateral_bootstrap_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_lateral_bootstrap_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Lateral-Balance",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_lateral_balance_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_lateral_balance_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Turn-Bootstrap",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_turn_bootstrap_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_turn_bootstrap_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Turn-Balance",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_turn_balance_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_turn_balance_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Kp090-Kd080-Turn-Seeded-Bootstrap",
+  env_cfg=agibot_x2_ultra_kp090_kd080_turn_seeded_bootstrap_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_kp090_kd080_turn_seeded_bootstrap_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Kp090-Kd080-Turn-Gait-Bootstrap",
+  env_cfg=agibot_x2_ultra_kp090_kd080_turn_gait_bootstrap_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_kp090_kd080_turn_gait_bootstrap_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Kp090-Kd080-Arc-Turn-Bootstrap",
+  env_cfg=agibot_x2_ultra_kp090_kd080_arc_turn_bootstrap_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_kp090_kd080_arc_turn_bootstrap_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Omni-Rehearsal",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_omni_rehearsal_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_omni_rehearsal_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Omni-Consolidate",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_omni_consolidate_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_omni_consolidate_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Omni-Finalize",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_omni_finalize_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_omni_finalize_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Full-Speed",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_full_speed_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_full_speed_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Full-Speed-Brake",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_full_speed_brake_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_full_speed_brake_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Full-Speed-Gait-Refine",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_full_speed_gait_refine_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_full_speed_gait_refine_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Full-Speed-Robust-Mild",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_full_speed_robust_mild_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_full_speed_robust_mild_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Full-Speed-Leg-Robust",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_full_speed_leg_robust_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_full_speed_leg_robust_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Full-Speed-Robust-Finalize",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_full_speed_robust_finalize_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_full_speed_robust_finalize_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Full-Speed-Robust-Stop",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_full_speed_robust_stop_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_full_speed_robust_stop_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Robust-Flat",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_flat_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_flat_env_cfg(play=True),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Robust-Omni",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_omni_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_omni_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Robust-Mild",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_mild_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_mild_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Robust-Medium",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_medium_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_medium_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Robust-Actuator",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_actuator_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_actuator_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Robust-Dynamics",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_dynamics_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_dynamics_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Robust-Sensor",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_sensor_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_sensor_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Robust-Mild-Sagittal",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_mild_sagittal_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_mild_sagittal_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Robust-Mild-Lateral",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_mild_lateral_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_mild_lateral_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Kp090-Kd080-Robust-Mild-Turn",
+  env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_mild_turn_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_kp090_kd080_robust_mild_turn_env_cfg(
+    play=True
+  ),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Robust-Flat",
+  env_cfg=agibot_x2_ultra_behavior_robust_flat_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_robust_flat_env_cfg(play=True),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Robust-Low-Speed",
+  env_cfg=agibot_x2_ultra_behavior_robust_low_speed_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_robust_low_speed_env_cfg(play=True),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Robust-Backward-Refine",
+  env_cfg=agibot_x2_ultra_behavior_robust_backward_refine_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_robust_backward_refine_env_cfg(play=True),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Robust-Lateral-Refine",
+  env_cfg=agibot_x2_ultra_behavior_robust_lateral_refine_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_robust_lateral_refine_env_cfg(play=True),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Robust-Lateral-Balance",
+  env_cfg=agibot_x2_ultra_behavior_robust_lateral_balance_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_robust_lateral_balance_env_cfg(play=True),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Robust-Lateral-Brake",
+  env_cfg=agibot_x2_ultra_behavior_robust_lateral_brake_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_robust_lateral_brake_env_cfg(play=True),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+register_mjlab_task(
+  task_id="Agibot-X2-Ultra-Behavior-Robust-Lateral-Backward",
+  env_cfg=agibot_x2_ultra_behavior_robust_lateral_backward_env_cfg(),
+  play_env_cfg=agibot_x2_ultra_behavior_robust_lateral_backward_env_cfg(play=True),
+  rl_cfg=agibot_x2_ultra_behavior_ppo_runner_cfg(),
+  runner_cls=VelocityOnPolicyRunner,
+)
+
+
+# Exact-gain aliases for the proven staged locomotion curricula.  The source
+# curriculum functions return fresh config objects; only the robot actuator
+# recipe and its Kp-consistent action scale are replaced here.
+_FACTORY_RECORDED_TASKS = (
+  (
+    "Agibot-X2-Ultra-Factory-Recorded-Flat",
+    agibot_x2_ultra_kp090_kd080_flat_env_cfg,
+    agibot_x2_ultra_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Factory-Recorded-Gait-Bootstrap",
+    agibot_x2_ultra_kp090_kd080_gait_bootstrap_env_cfg,
+    agibot_x2_ultra_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Flat",
+    agibot_x2_ultra_behavior_kp090_kd080_flat_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Sagittal-Stabilize",
+    agibot_x2_ultra_behavior_kp090_kd080_sagittal_stabilize_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Backward-Stabilize",
+    agibot_x2_ultra_behavior_kp090_kd080_backward_stabilize_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Sagittal-Balance",
+    agibot_x2_ultra_behavior_kp090_kd080_sagittal_balance_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Omni-Low-Speed",
+    agibot_x2_ultra_behavior_kp090_kd080_omni_low_speed_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Lateral-Bootstrap",
+    agibot_x2_ultra_behavior_kp090_kd080_lateral_bootstrap_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Lateral-Balance",
+    agibot_x2_ultra_behavior_kp090_kd080_lateral_balance_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Turn-Bootstrap",
+    agibot_x2_ultra_behavior_kp090_kd080_turn_bootstrap_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Turn-Balance",
+    agibot_x2_ultra_behavior_kp090_kd080_turn_balance_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Factory-Recorded-Turn-Seeded-Bootstrap",
+    agibot_x2_ultra_kp090_kd080_turn_seeded_bootstrap_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Factory-Recorded-Turn-Gait-Bootstrap",
+    agibot_x2_ultra_kp090_kd080_turn_gait_bootstrap_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Factory-Recorded-Arc-Turn-Bootstrap",
+    agibot_x2_ultra_kp090_kd080_arc_turn_bootstrap_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Omni-Rehearsal",
+    agibot_x2_ultra_behavior_kp090_kd080_omni_rehearsal_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Omni-Consolidate",
+    agibot_x2_ultra_behavior_kp090_kd080_omni_consolidate_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Omni-Finalize",
+    agibot_x2_ultra_behavior_kp090_kd080_omni_finalize_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Full-Speed",
+    agibot_x2_ultra_behavior_kp090_kd080_full_speed_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Full-Speed-Brake",
+    agibot_x2_ultra_behavior_kp090_kd080_full_speed_brake_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Full-Speed-Gait-Refine",
+    agibot_x2_ultra_behavior_factory_recorded_full_speed_gait_refine_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Right-Gait-Refine",
+    agibot_x2_ultra_behavior_factory_recorded_right_gait_refine_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Right-Gait-Finish",
+    agibot_x2_ultra_behavior_factory_recorded_right_gait_finish_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Robust-Mild",
+    agibot_x2_ultra_behavior_kp090_kd080_robust_mild_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Robust-Actuator",
+    agibot_x2_ultra_behavior_kp090_kd080_robust_actuator_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Robust-Dynamics",
+    agibot_x2_ultra_behavior_kp090_kd080_robust_dynamics_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Robust-Sensor",
+    agibot_x2_ultra_behavior_kp090_kd080_robust_sensor_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Sensor-Bias",
+    agibot_x2_ultra_behavior_kp090_kd080_sensor_bias_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Sensor-Delay",
+    agibot_x2_ultra_behavior_kp090_kd080_sensor_delay_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Sensor-Stability",
+    agibot_x2_ultra_behavior_kp090_kd080_sensor_stability_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Sensor-History2-Stability",
+    agibot_x2_ultra_behavior_kp090_kd080_sensor_history2_stability_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Sensor-History2-Gait-Recover",
+    agibot_x2_ultra_behavior_kp090_kd080_sensor_history2_gait_recover_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Sensor-History2-Backward-Clearance",
+    agibot_x2_ultra_behavior_kp090_kd080_sensor_history2_backward_clearance_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Sensor-History2-Backward-Finish",
+    agibot_x2_ultra_behavior_kp090_kd080_sensor_history2_backward_finish_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Sensor-History2-Nominal-Finish",
+    agibot_x2_ultra_behavior_kp090_kd080_sensor_history2_nominal_finish_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Sensor-History2-Turn-Finish",
+    agibot_x2_ultra_behavior_kp090_kd080_sensor_history2_turn_finish_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Robust-Mild-Sagittal",
+    agibot_x2_ultra_behavior_kp090_kd080_robust_mild_sagittal_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Robust-Mild-Lateral",
+    agibot_x2_ultra_behavior_kp090_kd080_robust_mild_lateral_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Robust-Mild-Turn",
+    agibot_x2_ultra_behavior_kp090_kd080_robust_mild_turn_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Robust-Medium",
+    agibot_x2_ultra_behavior_kp090_kd080_robust_medium_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Full-Speed-Robust-Mild",
+    agibot_x2_ultra_behavior_kp090_kd080_full_speed_robust_mild_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-History2-Full-Envelope",
+    agibot_x2_ultra_behavior_kp090_kd080_history2_full_envelope_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-History2-Full-Stop",
+    agibot_x2_ultra_behavior_kp090_kd080_history2_full_stop_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-History2-Full-Settle",
+    agibot_x2_ultra_behavior_kp090_kd080_history2_full_settle_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-History2-Full-Gait-Settle",
+    agibot_x2_ultra_behavior_kp090_kd080_history2_full_gait_settle_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-History2-Full-Gait-Stop",
+    agibot_x2_ultra_behavior_kp090_kd080_history2_full_gait_stop_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Full-Speed-Leg-Robust",
+    agibot_x2_ultra_behavior_kp090_kd080_full_speed_leg_robust_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Full-Speed-Robust-Finalize",
+    agibot_x2_ultra_behavior_kp090_kd080_full_speed_robust_finalize_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+  (
+    "Agibot-X2-Ultra-Behavior-Factory-Recorded-Full-Speed-Robust-Stop",
+    agibot_x2_ultra_behavior_kp090_kd080_full_speed_robust_stop_env_cfg,
+    agibot_x2_ultra_behavior_ppo_runner_cfg,
+  ),
+)
+
+for _task_id, _env_cfg_fn, _rl_cfg_fn in _FACTORY_RECORDED_TASKS:
+  register_mjlab_task(
+    task_id=_task_id,
+    env_cfg=use_x2_ultra_factory_recorded_leg_gains(_env_cfg_fn()),
+    play_env_cfg=use_x2_ultra_factory_recorded_leg_gains(
+      _env_cfg_fn(play=True)
+    ),
+    rl_cfg=_rl_cfg_fn(),
+    runner_cls=VelocityOnPolicyRunner,
+  )

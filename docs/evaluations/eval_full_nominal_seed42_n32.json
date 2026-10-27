@@ -1,0 +1,962 @@
+{
+  "task": "Agibot-X2-Ultra-Behavior-Factory-Recorded-History2-Full-Envelope",
+  "checkpoint": "models/history2_hybrid_v1/model_moving_4740.pt",
+  "fallback_checkpoint": null,
+  "zero_command_checkpoint": "models/history2_hybrid_v1/model_settling_4720.pt",
+  "lateral_gate_threshold": 0.1,
+  "num_envs": 32,
+  "seed": 42,
+  "profile": "full",
+  "environment": "nominal",
+  "actuator_gain_profile": "training",
+  "actuator_gain_scale": 1.0,
+  "requirements": {
+    "long_zero_command_stand": true,
+    "forward_backward_lateral_turn_run": true,
+    "brake_after_command_cancel": true,
+    "restart_after_stop": true,
+    "continuous_direction_switching": true
+  },
+  "passed": true,
+  "stages": {
+    "long_stand": {
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "duration_s": 60.0,
+      "kind": "stand",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 6.668082237243652,
+      "mean_actual_velocity": [
+        -0.00010859030589926988,
+        -0.00010591062164166942,
+        -4.842683847527951e-05
+      ],
+      "mean_actual_angular_velocity": [
+        8.907279698178172e-05,
+        0.0004144457634538412,
+        -0.003349942620843649
+      ],
+      "linear_tracking_rmse": 0.00016036792658269405,
+      "yaw_tracking_rmse": 0.0033584125339984894,
+      "planar_speed_rms": 0.00016036792658269405,
+      "yaw_rate_rms": 0.0033584125339984894,
+      "foot_contact_duty_factor": [
+        1.0,
+        1.0
+      ],
+      "contact_duty_asymmetry": 0.0,
+      "single_support_fraction": 0.0,
+      "double_support_fraction": 1.0,
+      "flight_fraction": 0.0,
+      "touchdowns_per_foot_per_env": [
+        0.0,
+        0.0
+      ],
+      "step_frequency_per_foot_hz": [
+        0.0,
+        0.0
+      ],
+      "mean_landing_swing_height_m": [
+        0.0,
+        0.0
+      ],
+      "mean_contact_slip_mps": 0.0004184562712907791,
+      "mean_landing_force_n": 0.0,
+      "passed": true,
+      "failures": []
+    },
+    "forward_walk": {
+      "command": [
+        0.8,
+        0.0,
+        0.0
+      ],
+      "duration_s": 8.0,
+      "kind": "linear",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 5.579707622528076,
+      "mean_actual_velocity": [
+        0.71855628490448,
+        0.019611306488513947,
+        -0.01885312609374523
+      ],
+      "mean_actual_angular_velocity": [
+        0.002336550736799836,
+        0.010225669480860233,
+        -0.0224318690598011
+      ],
+      "linear_tracking_rmse": 0.0920889750123024,
+      "yaw_tracking_rmse": 0.07457644492387772,
+      "planar_speed_rms": 0.7198405265808105,
+      "yaw_rate_rms": 0.07457644492387772,
+      "foot_contact_duty_factor": [
+        0.5396875143051147,
+        0.5368750095367432
+      ],
+      "contact_duty_asymmetry": 0.002812500111758709,
+      "single_support_fraction": 0.9143750071525574,
+      "double_support_fraction": 0.08109375089406967,
+      "flight_fraction": 0.0045312498696148396,
+      "touchdowns_per_foot_per_env": [
+        7.15625,
+        6.75
+      ],
+      "step_frequency_per_foot_hz": [
+        1.7890625,
+        1.6875
+      ],
+      "mean_landing_swing_height_m": [
+        0.07831702381372452,
+        0.06571851670742035
+      ],
+      "mean_contact_slip_mps": 0.03332255035638809,
+      "mean_landing_force_n": 545.647705078125,
+      "passed": true,
+      "failures": []
+    },
+    "brake_after_forward": {
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "duration_s": 5.0,
+      "kind": "brake",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 5.087635517120361,
+      "mean_actual_velocity": [
+        -0.0006785287405364215,
+        -0.0007070692954584956,
+        -0.00010338227730244398
+      ],
+      "mean_actual_angular_velocity": [
+        -0.0002168431383324787,
+        -0.005196802318096161,
+        -0.00031889003003016114
+      ],
+      "linear_tracking_rmse": 0.007994100451469421,
+      "yaw_tracking_rmse": 0.0039642807096242905,
+      "planar_speed_rms": 0.007994100451469421,
+      "yaw_rate_rms": 0.0039642807096242905,
+      "foot_contact_duty_factor": [
+        1.0,
+        1.0
+      ],
+      "contact_duty_asymmetry": 0.0,
+      "single_support_fraction": 0.0,
+      "double_support_fraction": 1.0,
+      "flight_fraction": 0.0,
+      "touchdowns_per_foot_per_env": [
+        0.0,
+        0.0
+      ],
+      "step_frequency_per_foot_hz": [
+        0.0,
+        0.0
+      ],
+      "mean_landing_swing_height_m": [
+        0.0,
+        0.0
+      ],
+      "mean_contact_slip_mps": 0.00013155721535440534,
+      "mean_landing_force_n": 0.0,
+      "settling_time_p90_s": 0.6200000047683716,
+      "passed": true,
+      "failures": []
+    },
+    "restart_forward": {
+      "command": [
+        0.8,
+        0.0,
+        0.0
+      ],
+      "duration_s": 8.0,
+      "kind": "restart",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 4.942840099334717,
+      "mean_actual_velocity": [
+        0.7203994989395142,
+        0.02081645093858242,
+        -0.016506796702742577
+      ],
+      "mean_actual_angular_velocity": [
+        0.006048487965017557,
+        0.00023718344164080918,
+        -0.026252515614032745
+      ],
+      "linear_tracking_rmse": 0.09129456430673599,
+      "yaw_tracking_rmse": 0.07695181667804718,
+      "planar_speed_rms": 0.7217852473258972,
+      "yaw_rate_rms": 0.07695181667804718,
+      "foot_contact_duty_factor": [
+        0.5192187428474426,
+        0.5560937523841858
+      ],
+      "contact_duty_asymmetry": 0.03687499836087227,
+      "single_support_fraction": 0.9190624952316284,
+      "double_support_fraction": 0.078125,
+      "flight_fraction": 0.002812500111758709,
+      "touchdowns_per_foot_per_env": [
+        6.1875,
+        7.4375
+      ],
+      "step_frequency_per_foot_hz": [
+        1.546875,
+        1.859375
+      ],
+      "mean_landing_swing_height_m": [
+        0.07838500291109085,
+        0.06949254870414734
+      ],
+      "mean_contact_slip_mps": 0.032131265848875046,
+      "mean_landing_force_n": 549.2361450195312,
+      "response_time_p90_s": 0.3199999928474426,
+      "response_confirmation_window_s": 0.5,
+      "passed": true,
+      "failures": []
+    },
+    "backward_walk": {
+      "command": [
+        -0.6,
+        0.0,
+        0.0
+      ],
+      "duration_s": 8.0,
+      "kind": "linear",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 8.913395881652832,
+      "mean_actual_velocity": [
+        -0.46584248542785645,
+        0.0037372626829892397,
+        -0.05985758453607559
+      ],
+      "mean_actual_angular_velocity": [
+        -0.0032502231188118458,
+        0.007354574277997017,
+        0.04721865803003311
+      ],
+      "linear_tracking_rmse": 0.1399402767419815,
+      "yaw_tracking_rmse": 0.10451723635196686,
+      "planar_speed_rms": 0.4675406813621521,
+      "yaw_rate_rms": 0.10451723635196686,
+      "foot_contact_duty_factor": [
+        0.5735937356948853,
+        0.5470312237739563
+      ],
+      "contact_duty_asymmetry": 0.02656250074505806,
+      "single_support_fraction": 0.8793749809265137,
+      "double_support_fraction": 0.12062499672174454,
+      "flight_fraction": 0.0,
+      "touchdowns_per_foot_per_env": [
+        7.84375,
+        6.46875
+      ],
+      "step_frequency_per_foot_hz": [
+        1.9609375,
+        1.6171875
+      ],
+      "mean_landing_swing_height_m": [
+        0.044016994535923004,
+        0.04169505089521408
+      ],
+      "mean_contact_slip_mps": 0.016888592392206192,
+      "mean_landing_force_n": 330.89190673828125,
+      "passed": true,
+      "failures": []
+    },
+    "lateral_left": {
+      "command": [
+        0.0,
+        0.6,
+        0.0
+      ],
+      "duration_s": 8.0,
+      "kind": "linear",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 7.177426815032959,
+      "mean_actual_velocity": [
+        -0.05291926488280296,
+        0.4648876488208771,
+        -0.020497025921940804
+      ],
+      "mean_actual_angular_velocity": [
+        0.014363300055265427,
+        -0.008229685947299004,
+        -0.05834656581282616
+      ],
+      "linear_tracking_rmse": 0.1530500054359436,
+      "yaw_tracking_rmse": 0.11813917011022568,
+      "planar_speed_rms": 0.47041410207748413,
+      "yaw_rate_rms": 0.11813917011022568,
+      "foot_contact_duty_factor": [
+        0.5537499785423279,
+        0.573437511920929
+      ],
+      "contact_duty_asymmetry": 0.019687499850988388,
+      "single_support_fraction": 0.8728125095367432,
+      "double_support_fraction": 0.12718750536441803,
+      "flight_fraction": 0.0,
+      "touchdowns_per_foot_per_env": [
+        6.0,
+        8.78125
+      ],
+      "step_frequency_per_foot_hz": [
+        1.5,
+        2.1953125
+      ],
+      "mean_landing_swing_height_m": [
+        0.05955078825354576,
+        0.032269012182950974
+      ],
+      "mean_contact_slip_mps": 0.03257131204009056,
+      "mean_landing_force_n": 480.0508728027344,
+      "passed": true,
+      "failures": []
+    },
+    "lateral_right": {
+      "command": [
+        0.0,
+        -0.6,
+        0.0
+      ],
+      "duration_s": 8.0,
+      "kind": "linear",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 4.275839805603027,
+      "mean_actual_velocity": [
+        -0.008763710036873817,
+        -0.49108409881591797,
+        0.0035317998845130205
+      ],
+      "mean_actual_angular_velocity": [
+        -0.005814807489514351,
+        0.0017714116256684065,
+        0.06746625155210495
+      ],
+      "linear_tracking_rmse": 0.11654366552829742,
+      "yaw_tracking_rmse": 0.1567307561635971,
+      "planar_speed_rms": 0.49283191561698914,
+      "yaw_rate_rms": 0.1567307561635971,
+      "foot_contact_duty_factor": [
+        0.5471875071525574,
+        0.5662500262260437
+      ],
+      "contact_duty_asymmetry": 0.019062500447034836,
+      "single_support_fraction": 0.8865625262260437,
+      "double_support_fraction": 0.11343750357627869,
+      "flight_fraction": 0.0,
+      "touchdowns_per_foot_per_env": [
+        7.0,
+        7.0
+      ],
+      "step_frequency_per_foot_hz": [
+        1.75,
+        1.75
+      ],
+      "mean_landing_swing_height_m": [
+        0.044315483421087265,
+        0.05783006548881531
+      ],
+      "mean_contact_slip_mps": 0.03480717912316322,
+      "mean_landing_force_n": 429.6390075683594,
+      "passed": true,
+      "failures": []
+    },
+    "turn_left": {
+      "command": [
+        0.0,
+        0.0,
+        0.7
+      ],
+      "duration_s": 8.0,
+      "kind": "turn",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 3.6739397048950195,
+      "mean_actual_velocity": [
+        -0.018159151077270508,
+        0.03395325690507889,
+        -0.00043628161074593663
+      ],
+      "mean_actual_angular_velocity": [
+        -0.015116202645003796,
+        0.015487121418118477,
+        0.7247188687324524
+      ],
+      "linear_tracking_rmse": 0.04779069870710373,
+      "yaw_tracking_rmse": 0.09737145155668259,
+      "planar_speed_rms": 0.04779069870710373,
+      "yaw_rate_rms": 0.7308130264282227,
+      "foot_contact_duty_factor": [
+        0.5649999976158142,
+        0.6000000238418579
+      ],
+      "contact_duty_asymmetry": 0.03500000014901161,
+      "single_support_fraction": 0.8349999785423279,
+      "double_support_fraction": 0.16500000655651093,
+      "flight_fraction": 0.0,
+      "touchdowns_per_foot_per_env": [
+        7.0,
+        6.0
+      ],
+      "step_frequency_per_foot_hz": [
+        1.75,
+        1.5
+      ],
+      "mean_landing_swing_height_m": [
+        0.05184544250369072,
+        0.0533108226954937
+      ],
+      "mean_contact_slip_mps": 0.03351825848221779,
+      "mean_landing_force_n": 442.01898193359375,
+      "signed_yaw_progress_radps": 0.7247188687324524,
+      "passed": true,
+      "failures": []
+    },
+    "turn_right": {
+      "command": [
+        0.0,
+        0.0,
+        -0.7
+      ],
+      "duration_s": 8.0,
+      "kind": "turn",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 5.098954677581787,
+      "mean_actual_velocity": [
+        0.006429067347198725,
+        0.015236740931868553,
+        0.0005655097775161266
+      ],
+      "mean_actual_angular_velocity": [
+        0.04700462892651558,
+        -0.014849956147372723,
+        -0.7633628249168396
+      ],
+      "linear_tracking_rmse": 0.04071316123008728,
+      "yaw_tracking_rmse": 0.10251333564519882,
+      "planar_speed_rms": 0.04071316123008728,
+      "yaw_rate_rms": 0.7676047086715698,
+      "foot_contact_duty_factor": [
+        0.5899999737739563,
+        0.5493749976158142
+      ],
+      "contact_duty_asymmetry": 0.04062499850988388,
+      "single_support_fraction": 0.8606250286102295,
+      "double_support_fraction": 0.1393750011920929,
+      "flight_fraction": 0.0,
+      "touchdowns_per_foot_per_env": [
+        6.0,
+        7.03125
+      ],
+      "step_frequency_per_foot_hz": [
+        1.5,
+        1.7578125
+      ],
+      "mean_landing_swing_height_m": [
+        0.055281590670347214,
+        0.03901372104883194
+      ],
+      "mean_contact_slip_mps": 0.02081139385700226,
+      "mean_landing_force_n": 585.2357788085938,
+      "signed_yaw_progress_radps": 0.7633628249168396,
+      "passed": true,
+      "failures": []
+    },
+    "run": {
+      "command": [
+        1.8,
+        0.0,
+        0.0
+      ],
+      "duration_s": 10.0,
+      "kind": "run",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 11.48594856262207,
+      "mean_actual_velocity": [
+        1.5878987312316895,
+        -0.007109819445759058,
+        -0.08047971874475479
+      ],
+      "mean_actual_angular_velocity": [
+        -0.010199497453868389,
+        -0.00048625306226313114,
+        0.04695621132850647
+      ],
+      "linear_tracking_rmse": 0.21895794570446014,
+      "yaw_tracking_rmse": 0.11551769077777863,
+      "planar_speed_rms": 1.5888292789459229,
+      "yaw_rate_rms": 0.11551769077777863,
+      "foot_contact_duty_factor": [
+        0.547249972820282,
+        0.4886249899864197
+      ],
+      "contact_duty_asymmetry": 0.0586250014603138,
+      "single_support_fraction": 0.8948749899864197,
+      "double_support_fraction": 0.07050000131130219,
+      "flight_fraction": 0.03462500125169754,
+      "touchdowns_per_foot_per_env": [
+        11.5,
+        13.375
+      ],
+      "step_frequency_per_foot_hz": [
+        2.299999952316284,
+        2.674999952316284
+      ],
+      "mean_landing_swing_height_m": [
+        0.07352941483259201,
+        0.057967659085989
+      ],
+      "mean_contact_slip_mps": 0.16096925735473633,
+      "mean_landing_force_n": 578.8546752929688,
+      "passed": true,
+      "failures": []
+    },
+    "brake_after_run": {
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "duration_s": 6.0,
+      "kind": "brake",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 9.942866325378418,
+      "mean_actual_velocity": [
+        -0.0022557484917342663,
+        -0.0019727940671145916,
+        -0.000696810835506767
+      ],
+      "mean_actual_angular_velocity": [
+        -0.0011639200383797288,
+        -0.013504253700375557,
+        -0.0027978753205388784
+      ],
+      "linear_tracking_rmse": 0.028582749888300896,
+      "yaw_tracking_rmse": 0.00777103565633297,
+      "planar_speed_rms": 0.028582749888300896,
+      "yaw_rate_rms": 0.00777103565633297,
+      "foot_contact_duty_factor": [
+        1.0,
+        1.0
+      ],
+      "contact_duty_asymmetry": 0.0,
+      "single_support_fraction": 0.0,
+      "double_support_fraction": 1.0,
+      "flight_fraction": 0.0,
+      "touchdowns_per_foot_per_env": [
+        0.0,
+        0.0
+      ],
+      "step_frequency_per_foot_hz": [
+        0.0,
+        0.0
+      ],
+      "mean_landing_swing_height_m": [
+        0.0,
+        0.0
+      ],
+      "mean_contact_slip_mps": 0.00029348142561502755,
+      "mean_landing_force_n": 0.0,
+      "settling_time_p90_s": 1.159999966621399,
+      "passed": true,
+      "failures": []
+    },
+    "restart_after_stop": {
+      "command": [
+        0.8,
+        0.0,
+        0.0
+      ],
+      "duration_s": 8.0,
+      "kind": "restart",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 4.941901683807373,
+      "mean_actual_velocity": [
+        0.7199786305427551,
+        0.02288203500211239,
+        -0.01853451505303383
+      ],
+      "mean_actual_angular_velocity": [
+        0.0027725582476705313,
+        -0.009326927363872528,
+        -0.029711833223700523
+      ],
+      "linear_tracking_rmse": 0.09167644381523132,
+      "yaw_tracking_rmse": 0.07602087408304214,
+      "planar_speed_rms": 0.7213670015335083,
+      "yaw_rate_rms": 0.07602087408304214,
+      "foot_contact_duty_factor": [
+        0.5706250071525574,
+        0.5131250023841858
+      ],
+      "contact_duty_asymmetry": 0.057500001043081284,
+      "single_support_fraction": 0.9090625047683716,
+      "double_support_fraction": 0.08734375238418579,
+      "flight_fraction": 0.0035937500651925802,
+      "touchdowns_per_foot_per_env": [
+        7.09375,
+        7.625
+      ],
+      "step_frequency_per_foot_hz": [
+        1.7734375,
+        1.90625
+      ],
+      "mean_landing_swing_height_m": [
+        0.07903103530406952,
+        0.0677417740225792
+      ],
+      "mean_contact_slip_mps": 0.03338628262281418,
+      "mean_landing_force_n": 547.94384765625,
+      "response_time_p90_s": 0.3580000102519989,
+      "response_confirmation_window_s": 0.5,
+      "passed": true,
+      "failures": []
+    },
+    "switch_forward": {
+      "command": [
+        0.7,
+        0.0,
+        0.0
+      ],
+      "duration_s": 2.0,
+      "kind": "switch_linear",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 4.176030158996582,
+      "mean_actual_velocity": [
+        0.6213235259056091,
+        0.01791628822684288,
+        -0.013907446525990963
+      ],
+      "mean_actual_angular_velocity": [
+        0.0035817925818264484,
+        -0.004318175371736288,
+        -0.029390864074230194
+      ],
+      "linear_tracking_rmse": 0.08833165466785431,
+      "yaw_tracking_rmse": 0.07717454433441162,
+      "planar_speed_rms": 0.6226197481155396,
+      "yaw_rate_rms": 0.07717454433441162,
+      "foot_contact_duty_factor": [
+        0.5348958373069763,
+        0.5348958373069763
+      ],
+      "contact_duty_asymmetry": 0.0,
+      "single_support_fraction": 0.9260416626930237,
+      "double_support_fraction": 0.07187499850988388,
+      "flight_fraction": 0.0020833334419876337,
+      "touchdowns_per_foot_per_env": [
+        2.125,
+        2.09375
+      ],
+      "step_frequency_per_foot_hz": [
+        1.7708332538604736,
+        1.7447916269302368
+      ],
+      "mean_landing_swing_height_m": [
+        0.07516016811132431,
+        0.06640615314245224
+      ],
+      "mean_contact_slip_mps": 0.02848759852349758,
+      "mean_landing_force_n": 564.0022583007812,
+      "passed": true,
+      "failures": []
+    },
+    "switch_backward": {
+      "command": [
+        -0.6,
+        0.0,
+        0.0
+      ],
+      "duration_s": 2.0,
+      "kind": "switch_linear",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 8.942961692810059,
+      "mean_actual_velocity": [
+        -0.4439639747142792,
+        0.0021859745029360056,
+        -0.04884626343846321
+      ],
+      "mean_actual_angular_velocity": [
+        -0.029632538557052612,
+        0.01919558085501194,
+        0.027740979567170143
+      ],
+      "linear_tracking_rmse": 0.16501553356647491,
+      "yaw_tracking_rmse": 0.10345499217510223,
+      "planar_speed_rms": 0.44719892740249634,
+      "yaw_rate_rms": 0.10345499217510223,
+      "foot_contact_duty_factor": [
+        0.5682291388511658,
+        0.5369791388511658
+      ],
+      "contact_duty_asymmetry": 0.03125,
+      "single_support_fraction": 0.8947916626930237,
+      "double_support_fraction": 0.10520832985639572,
+      "flight_fraction": 0.0,
+      "touchdowns_per_foot_per_env": [
+        2.0,
+        2.1875
+      ],
+      "step_frequency_per_foot_hz": [
+        1.6666666269302368,
+        1.8229166269302368
+      ],
+      "mean_landing_swing_height_m": [
+        0.0516892708837986,
+        0.048993825912475586
+      ],
+      "mean_contact_slip_mps": 0.01549553219228983,
+      "mean_landing_force_n": 431.4278869628906,
+      "passed": true,
+      "failures": []
+    },
+    "switch_left": {
+      "command": [
+        0.0,
+        0.6,
+        0.0
+      ],
+      "duration_s": 2.0,
+      "kind": "switch_linear",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 7.328150272369385,
+      "mean_actual_velocity": [
+        -0.053709495812654495,
+        0.440348744392395,
+        -0.021226907148957253
+      ],
+      "mean_actual_angular_velocity": [
+        0.011796984821557999,
+        -0.002877843799069524,
+        -0.049097053706645966
+      ],
+      "linear_tracking_rmse": 0.17671629786491394,
+      "yaw_tracking_rmse": 0.11876998841762543,
+      "planar_speed_rms": 0.44681891798973083,
+      "yaw_rate_rms": 0.11876998841762543,
+      "foot_contact_duty_factor": [
+        0.5244791507720947,
+        0.5729166865348816
+      ],
+      "contact_duty_asymmetry": 0.04843749850988388,
+      "single_support_fraction": 0.9005208611488342,
+      "double_support_fraction": 0.09843750298023224,
+      "flight_fraction": 0.0010416667209938169,
+      "touchdowns_per_foot_per_env": [
+        2.0,
+        2.3125
+      ],
+      "step_frequency_per_foot_hz": [
+        1.6666666269302368,
+        1.9270832538604736
+      ],
+      "mean_landing_swing_height_m": [
+        0.0608210526406765,
+        0.03507804870605469
+      ],
+      "mean_contact_slip_mps": 0.020391341298818588,
+      "mean_landing_force_n": 566.5347900390625,
+      "passed": true,
+      "failures": []
+    },
+    "switch_right": {
+      "command": [
+        0.0,
+        -0.6,
+        0.0
+      ],
+      "duration_s": 2.0,
+      "kind": "switch_linear",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 4.143155097961426,
+      "mean_actual_velocity": [
+        -0.020439624786376953,
+        -0.39821481704711914,
+        0.002635104116052389
+      ],
+      "mean_actual_angular_velocity": [
+        0.021308256313204765,
+        -0.020994722843170166,
+        0.06798441708087921
+      ],
+      "linear_tracking_rmse": 0.21957984566688538,
+      "yaw_tracking_rmse": 0.1725275218486786,
+      "planar_speed_rms": 0.4075206518173218,
+      "yaw_rate_rms": 0.1725275218486786,
+      "foot_contact_duty_factor": [
+        0.582812488079071,
+        0.5260416865348816
+      ],
+      "contact_duty_asymmetry": 0.05677083507180214,
+      "single_support_fraction": 0.8911458253860474,
+      "double_support_fraction": 0.10885416716337204,
+      "flight_fraction": 0.0,
+      "touchdowns_per_foot_per_env": [
+        2.0,
+        2.0
+      ],
+      "step_frequency_per_foot_hz": [
+        1.6666666269302368,
+        1.6666666269302368
+      ],
+      "mean_landing_swing_height_m": [
+        0.045912060886621475,
+        0.06245510280132294
+      ],
+      "mean_contact_slip_mps": 0.029688866809010506,
+      "mean_landing_force_n": 485.1385192871094,
+      "passed": true,
+      "failures": []
+    },
+    "switch_turn_left": {
+      "command": [
+        0.0,
+        0.0,
+        0.7
+      ],
+      "duration_s": 2.0,
+      "kind": "switch_turn",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 2.652696371078491,
+      "mean_actual_velocity": [
+        -0.044619787484407425,
+        -0.008636384271085262,
+        0.0005078821559436619
+      ],
+      "mean_actual_angular_velocity": [
+        -0.010506069287657738,
+        0.014581413939595222,
+        0.7489699125289917
+      ],
+      "linear_tracking_rmse": 0.07418256253004074,
+      "yaw_tracking_rmse": 0.11487223953008652,
+      "planar_speed_rms": 0.07418256253004074,
+      "yaw_rate_rms": 0.7561439275741577,
+      "foot_contact_duty_factor": [
+        0.5416666865348816,
+        0.5979166626930237
+      ],
+      "contact_duty_asymmetry": 0.05624999850988388,
+      "single_support_fraction": 0.8604166507720947,
+      "double_support_fraction": 0.13958333432674408,
+      "flight_fraction": 0.0,
+      "touchdowns_per_foot_per_env": [
+        2.0,
+        2.0
+      ],
+      "step_frequency_per_foot_hz": [
+        1.6666666269302368,
+        1.6666666269302368
+      ],
+      "mean_landing_swing_height_m": [
+        0.05222032219171524,
+        0.05378703027963638
+      ],
+      "mean_contact_slip_mps": 0.029688216745853424,
+      "mean_landing_force_n": 442.9325866699219,
+      "passed": true,
+      "failures": []
+    },
+    "switch_turn_right": {
+      "command": [
+        0.0,
+        0.0,
+        -0.7
+      ],
+      "duration_s": 2.0,
+      "kind": "switch_turn",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 4.781844615936279,
+      "mean_actual_velocity": [
+        0.028007453307509422,
+        0.030040720477700233,
+        0.004621377680450678
+      ],
+      "mean_actual_angular_velocity": [
+        0.055434342473745346,
+        0.01980622299015522,
+        -0.7522363662719727
+      ],
+      "linear_tracking_rmse": 0.05740513652563095,
+      "yaw_tracking_rmse": 0.09758315980434418,
+      "planar_speed_rms": 0.05740513652563095,
+      "yaw_rate_rms": 0.7567386031150818,
+      "foot_contact_duty_factor": [
+        0.550000011920929,
+        0.5869791507720947
+      ],
+      "contact_duty_asymmetry": 0.03697916492819786,
+      "single_support_fraction": 0.8630208373069763,
+      "double_support_fraction": 0.13697916269302368,
+      "flight_fraction": 0.0,
+      "touchdowns_per_foot_per_env": [
+        2.0,
+        2.125
+      ],
+      "step_frequency_per_foot_hz": [
+        1.6666666269302368,
+        1.7708332538604736
+      ],
+      "mean_landing_swing_height_m": [
+        0.05961450934410095,
+        0.03839888423681259
+      ],
+      "mean_contact_slip_mps": 0.024103259667754173,
+      "mean_landing_force_n": 552.064453125,
+      "passed": true,
+      "failures": []
+    },
+    "final_stand": {
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "duration_s": 20.0,
+      "kind": "stand",
+      "survival_rate": 1.0,
+      "tilt_p95_deg": 6.363553047180176,
+      "mean_actual_velocity": [
+        1.5014832570159342e-05,
+        -0.00011556194658624008,
+        -5.70959036849672e-06
+      ],
+      "mean_actual_angular_velocity": [
+        -2.862635301426053e-05,
+        -0.0003141107445117086,
+        -0.0014991519274190068
+      ],
+      "linear_tracking_rmse": 0.0021462785080075264,
+      "yaw_tracking_rmse": 0.0017064149724319577,
+      "planar_speed_rms": 0.0021462785080075264,
+      "yaw_rate_rms": 0.0017064149724319577,
+      "foot_contact_duty_factor": [
+        1.0,
+        1.0
+      ],
+      "contact_duty_asymmetry": 0.0,
+      "single_support_fraction": 0.0,
+      "double_support_fraction": 1.0,
+      "flight_fraction": 0.0,
+      "touchdowns_per_foot_per_env": [
+        0.0,
+        0.0
+      ],
+      "step_frequency_per_foot_hz": [
+        0.0,
+        0.0
+      ],
+      "mean_landing_swing_height_m": [
+        0.0,
+        0.0
+      ],
+      "mean_contact_slip_mps": 0.00017728778766468167,
+      "mean_landing_force_n": 0.0,
+      "passed": true,
+      "failures": []
+    }
+  }
+}

@@ -1,0 +1,22 @@
+name: Behavior or integration report
+description: Report a reproducible training, simulation or deployment problem.
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Version and environment
+      description: Commit, task ID, model hash, GPU or robot/firmware, gain recipe.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Exact commands or command sequence, expected behavior and observed behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Attach evaluation JSON or a short log/video. Remove credentials and private details.

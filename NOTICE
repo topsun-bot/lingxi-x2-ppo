@@ -1,0 +1,32 @@
+Lingxi X2 PPO
+Copyright 2026 Lingxi X2 PPO contributors.
+
+This project includes and adapts training code from Unitree RL Mjlab:
+https://github.com/unitreerobotics/unitree_rl_mjlab
+Source revision: 1425b15f73bd4095f0df53709d7c389c3eb9e790
+The upstream training code is distributed under the Apache License 2.0.
+The Apache License 2.0 text is provided in LICENSE.
+
+The X2 Ultra robot description and meshes originate from AgiBot's X2 URDF
+repository:
+https://github.com/AgibotTech/agibot_x2_urdf
+Source revision: 77f43eb0904dae4c48ccd9154fee824f8ffd4d38
+Those assets retain the Mulan Permissive Software License, Version 2.
+The complete asset license is provided at:
+training/src/assets/robots/agibot_x2/OFFICIAL_MODEL_LICENSE
+
+Project modifications include X2-specific robot integration, locomotion
+curricula and rewards, randomization, history observations, expert-policy
+export, evaluation, and a separate ROS 2 deployment integration.
+The adapted MJCF changes mesh paths, adds foot sites, renames IMU sensors,
+and adds a subtree angular-momentum sensor; the supplied mesh files are
+unchanged from the source revision above.
+
+Bundled policy weights are this project's self-trained research artifacts.
+Official AimDK SDK sources, message definitions, simulator binaries, and
+vendor-supplied policy weights are not included in this distribution.
+
+Product and organization names are used for identification and attribution.
+This project does not imply endorsement by AgiBot, Unitree, or the authors
+of its dependencies. See THIRD_PARTY_NOTICES.md and docs/provenance.md for
+the precise scope, source history, and artifact checksums.
