@@ -23,7 +23,7 @@
   <tbody>
     <tr>
       <td align="center" valign="middle">
-        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation.mp4"><img src="docs/media/simulation.gif" alt="MuJoCo 仿真：前进、横移与跑步" width="420"></a>
+        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation.mp4"><img src="docs/media/simulation.gif" alt="MuJoCo 仿真：前进、横移与跑步" width="360"></a>
       </td>
       <td align="center" valign="middle">
         <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/hardware.mp4"><img src="docs/media/hardware.gif" alt="测试架环境下的 X2 真机实拍" height="320"></a>
@@ -39,10 +39,32 @@
         12 秒动图预览 · <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/hardware.mp4">完整视频 · 20 秒</a>
       </td>
     </tr>
+    <tr>
+      <th>全速走跑停 · 历史演示</th>
+      <th>低速全向控制 · 历史演示</th>
+    </tr>
+    <tr>
+      <td align="center" valign="middle">
+        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-full-speed.mp4"><img src="docs/media/simulation-full-speed.gif" alt="X2 早期策略：MuJoCo 全速行走、侧移与跑步" width="360"></a>
+      </td>
+      <td align="center" valign="middle">
+        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-low-speed.mp4"><img src="docs/media/simulation-low-speed.gif" alt="X2 早期策略：MuJoCo 低速行走、侧移与转向" width="360"></a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <strong>早期全速度策略 · 104 维输入</strong><br>
+        12 秒动图预览 · <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-full-speed.mp4">完整视频 · 35 秒</a>
+      </td>
+      <td align="center">
+        <strong>早期低速策略 · 104 维输入</strong><br>
+        12 秒动图预览 · <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-low-speed.mp4">完整视频 · 31 秒</a>
+      </td>
+    </tr>
   </tbody>
 </table>
 
-仿真视频包含站立、前进、后退、左右横移、左右转向、跑步、刹停和再次起步，画面同时显示目标速度与实际速度。真机视频为另行提供的实验记录，片段未标明策略检查点。[视频文件与来源说明](docs/media/README.md)。
+仿真视频包含站立、前进、后退、左右横移、左右转向、跑步、刹停和再次起步，画面同时显示目标速度与实际速度。新增两段为早期 Kp090/Kd080 策略录像，与当前公开的 History2 Hybrid 分开标注。真机视频为另行提供的实验记录，片段未标明策略检查点。[视频文件与来源说明](docs/media/README.md)。
 
 **当前是研究版本。** 八组归档仿真验收通过；历史真机测试实现过站立和部分前进行走，但转向后松手回零仍可能延迟失稳。开源整理后的 ROS 2 适配器需要独立完成实机回归，尚不能宣称全方向稳定行走。详见[真机状态](docs/hardware-status.md)。
 
