@@ -67,6 +67,9 @@ def check_artifacts() -> dict:
     video = ROOT / "docs/media/simulation.mp4"
     assert hashlib.sha256(video.read_bytes()).hexdigest() == "ddad1a4052491980d75fe33a4d4df709496eefff3279071cc7a36e1746bdf8ef", "Video checksum mismatch"
     assert (ROOT / "docs/media/simulation.gif").stat().st_size < 8 * 1024 * 1024
+    hardware_video = ROOT / "docs/media/hardware.mp4"
+    assert hashlib.sha256(hardware_video.read_bytes()).hexdigest() == "4845b1a794b3fd2708d18244962072baf93c9c3b349c9cb1f9f247be7450f8c2", "Hardware video checksum mismatch"
+    assert (ROOT / "docs/media/hardware.gif").stat().st_size < 8 * 1024 * 1024
 
     reports = sorted((ROOT / "docs/evaluations").glob("*.json"))
     assert len(reports) == 8, "Expected eight archived evaluation reports"

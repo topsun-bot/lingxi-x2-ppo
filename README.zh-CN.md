@@ -11,13 +11,38 @@
 
 <p align="center"><a href="README.md">English</a> · <a href="training/README.md">训练指南</a> · <a href="deployment/README.md">部署指南</a> · <a href="models/history2_hybrid_v1/README.md">模型卡</a></p>
 
-## 仿真演示
+## 仿真与真机演示
 
-<p align="center"><a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation.mp4"><img src="docs/media/simulation.gif" alt="MuJoCo 仿真：前进、横移与跑步" width="800"></a></p>
+<table>
+  <thead>
+    <tr>
+      <th width="50%">MuJoCo 仿真</th>
+      <th width="50%">X2 真机实拍</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center" valign="middle">
+        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation.mp4"><img src="docs/media/simulation.gif" alt="MuJoCo 仿真：前进、横移与跑步" width="420"></a>
+      </td>
+      <td align="center" valign="middle">
+        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/hardware.mp4"><img src="docs/media/hardware.gif" alt="测试架环境下的 X2 真机实拍" height="320"></a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <strong>公开的 History2 Hybrid 策略</strong><br>
+        12 秒动图预览 · <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation.mp4">完整视频 · 35 秒</a>
+      </td>
+      <td align="center">
+        <strong>真机实验录像</strong><br>
+        12 秒动图预览 · <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/hardware.mp4">完整视频 · 20 秒</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-<p align="center"><strong>MuJoCo 仿真 · History2 Hybrid 策略</strong><br>12 秒精选动图 · <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation.mp4">观看完整 35 秒视频</a> · <a href="docs/media/simulation.mp4">仓库内视频</a></p>
-
-完整视频包含站立、前进、后退、左右横移、左右转向、跑步、刹停和再次起步，画面同时显示目标速度与实际速度。
+仿真视频包含站立、前进、后退、左右横移、左右转向、跑步、刹停和再次起步，画面同时显示目标速度与实际速度。真机视频为另行提供的实验记录，片段未标明策略检查点。[视频文件与来源说明](docs/media/README.md)。
 
 **当前是研究版本。** 八组归档仿真验收通过；历史真机测试实现过站立和部分前进行走，但转向后松手回零仍可能延迟失稳。开源整理后的 ROS 2 适配器需要独立完成实机回归，尚不能宣称全方向稳定行走。详见[真机状态](docs/hardware-status.md)。
 

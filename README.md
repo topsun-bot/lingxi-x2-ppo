@@ -17,27 +17,45 @@
 
 <p align="center">
   <a href="README.zh-CN.md">中文</a> ·
-  <a href="#simulation">Simulation</a> ·
+  <a href="#simulation-and-hardware">Demos</a> ·
   <a href="#quick-start">Quick start</a> ·
   <a href="training/README.md">Training guide</a> ·
   <a href="deployment/README.md">Deployment guide</a> ·
   <a href="models/history2_hybrid_v1/README.md">Model card</a>
 </p>
 
-## Simulation
+## Simulation and hardware
 
-<p align="center">
-  <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation.mp4">
-    <img src="docs/media/simulation.gif" alt="MuJoCo simulation: forward walking, lateral walking and running" width="800">
-  </a>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th width="50%">MuJoCo simulation</th>
+      <th width="50%">X2 hardware demo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center" valign="middle">
+        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation.mp4"><img src="docs/media/simulation.gif" alt="MuJoCo simulation: forward walking, lateral walking and running" width="420"></a>
+      </td>
+      <td align="center" valign="middle">
+        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/hardware.mp4"><img src="docs/media/hardware.gif" alt="X2 hardware footage in a test-rig environment" height="320"></a>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <strong>Released History2 Hybrid policy</strong><br>
+        12-second preview · <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation.mp4">Full video · 35 s</a>
+      </td>
+      <td align="center">
+        <strong>Hardware experiment recording</strong><br>
+        12-second preview · <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/hardware.mp4">Full video · 20 s</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-<p align="center">
-  <strong>MuJoCo simulation · released History2 Hybrid policy</strong><br>
-  12-second highlight loop · <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation.mp4">Watch the full 35-second video</a> · <a href="docs/media/simulation.mp4">Repository copy</a>
-</p>
-
-The full demo includes standing, forward/backward and lateral walking, left/right turns, running, braking and restarting. Its overlay shows commanded and measured velocities.
+The simulation covers standing, forward/backward and lateral walking, turns, running, braking and restarting, with commanded and measured velocities in the overlay. The hardware clip is a separately supplied experiment recording; it does not identify a policy checkpoint. [Video files and provenance](docs/media/README.md).
 
 **Research release:** the eight archived simulation evaluations pass. Historical hardware tests achieved standing and some forward walking, but turning followed by command cancellation could still cause loss of balance. The public ROS 2 adapter needs its own hardware regression. See [validation status](docs/hardware-status.md).
 
