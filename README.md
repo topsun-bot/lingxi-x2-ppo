@@ -36,7 +36,7 @@
   <tbody>
     <tr>
       <td align="center" valign="middle">
-        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation.mp4"><img src="docs/media/simulation.gif" alt="MuJoCo simulation: forward walking, lateral walking and running" width="420"></a>
+        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation.mp4"><img src="docs/media/simulation.gif" alt="MuJoCo simulation: forward walking, lateral walking and running" width="360"></a>
       </td>
       <td align="center" valign="middle">
         <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/hardware.mp4"><img src="docs/media/hardware.gif" alt="X2 hardware footage in a test-rig environment" height="320"></a>
@@ -58,10 +58,10 @@
     </tr>
     <tr>
       <td align="center" valign="middle">
-        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-full-speed.mp4"><img src="docs/media/simulation-full-speed.gif" alt="Earlier X2 policy: full-speed walking, lateral motion and running in MuJoCo" width="420"></a>
+        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-full-speed.mp4"><img src="docs/media/simulation-full-speed.gif" alt="Earlier X2 policy: full-speed walking, lateral motion and running in MuJoCo" width="360"></a>
       </td>
       <td align="center" valign="middle">
-        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-low-speed.mp4"><img src="docs/media/simulation-low-speed.gif" alt="Earlier X2 policy: low-speed walking, lateral motion and turning in MuJoCo" width="420"></a>
+        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-low-speed.mp4"><img src="docs/media/simulation-low-speed.gif" alt="Earlier X2 policy: low-speed walking, lateral motion and turning in MuJoCo" width="360"></a>
       </td>
     </tr>
     <tr>

@@ -23,7 +23,7 @@
   <tbody>
     <tr>
       <td align="center" valign="middle">
-        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation.mp4"><img src="docs/media/simulation.gif" alt="MuJoCo 仿真：前进、横移与跑步" width="420"></a>
+        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation.mp4"><img src="docs/media/simulation.gif" alt="MuJoCo 仿真：前进、横移与跑步" width="360"></a>
       </td>
       <td align="center" valign="middle">
         <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/hardware.mp4"><img src="docs/media/hardware.gif" alt="测试架环境下的 X2 真机实拍" height="320"></a>
@@ -45,10 +45,10 @@
     </tr>
     <tr>
       <td align="center" valign="middle">
-        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-full-speed.mp4"><img src="docs/media/simulation-full-speed.gif" alt="X2 早期策略：MuJoCo 全速行走、侧移与跑步" width="420"></a>
+        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-full-speed.mp4"><img src="docs/media/simulation-full-speed.gif" alt="X2 早期策略：MuJoCo 全速行走、侧移与跑步" width="360"></a>
       </td>
       <td align="center" valign="middle">
-        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-low-speed.mp4"><img src="docs/media/simulation-low-speed.gif" alt="X2 早期策略：MuJoCo 低速行走、侧移与转向" width="420"></a>
+        <a href="https://github.com/topsun-bot/lingxi-x2-ppo/releases/download/v0.1.0/simulation-low-speed.mp4"><img src="docs/media/simulation-low-speed.gif" alt="X2 早期策略：MuJoCo 低速行走、侧移与转向" width="360"></a>
       </td>
     </tr>
     <tr>
